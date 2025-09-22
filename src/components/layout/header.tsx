@@ -1,12 +1,17 @@
-import { PinIcon } from "../icons/pin-icon";
+import type { WeatherData } from '../../types/weather';
+import { PinIcon } from '../icons/pin-icon';
 
-export function Header() {
-    return (
-        <header className="flex flex-row items-center justify-between w-full py-5 px-2">
-            <div className="flex flex-row items-center gap-2">
-                <PinIcon />
-                <h1 className=" text-lg font-medium">London</h1>
-            </div>
-        </header>
-    )
+interface Props {
+  weather: WeatherData | null
+}
+
+export function Header({weather}: Props) {
+  return (
+    <header className="flex w-full flex-row items-center justify-between px-2 py-5">
+      <div className="flex flex-row items-center gap-2">
+        <PinIcon />
+        <h1 className="text-lg font-medium">{weather?.location.name}</h1>
+      </div>
+    </header>
+  );
 }
