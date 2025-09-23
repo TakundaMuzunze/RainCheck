@@ -1,4 +1,4 @@
-import type { ForecastData, WeatherData } from '../../types/weather';
+import type { ForecastData, WeatherData } from '../../../types/weather';
 
 interface Props {
   weather: WeatherData | null;

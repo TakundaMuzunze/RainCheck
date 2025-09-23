@@ -1,9 +1,9 @@
 import { WeatherCard } from './components/features/weather-card/weather-card';
-import { WeatherDisplay } from './components/ui/weather-display';
+import { WeatherDisplay } from './components/ui/weather-display/weather-display';
 import { useWeather } from './hooks/useWeather';
 import './App.css';
-import { Header } from './components/layout/header';
 import { useForecast } from './hooks/useForecast';
+import { Header } from './components/layout/header/header';
 
 function App() {
   const { weather, loading, error } = useWeather();
