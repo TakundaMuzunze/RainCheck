@@ -1,12 +1,8 @@
-import type { ForecastData, WeatherData } from '../../../types/weather';
+import { useWeatherContext } from '../../../contexts/WeatherContext';
 import { HourlyWeatherGrid } from './hourly-weather-grid';
 
-interface Props {
-  forecast: ForecastData | null;
-  weather: WeatherData | null;
-}
-
-export function WeatherCard({ forecast, weather }: Props) {
+export function WeatherCard() {
+  const { weather, forecast } = useWeatherContext();
   return (
     <article className="flex w-full flex-col items-center justify-between gap-4 rounded-xl border-1 border-gray-400 bg-white/20 p-6 shadow-2xl backdrop-blur-xl">
       <div className="flex w-full flex-row items-center justify-between">
@@ -22,7 +18,7 @@ export function WeatherCard({ forecast, weather }: Props) {
       </div>
 
       <div className="w-full">
-        <HourlyWeatherGrid forecast={forecast} />
+        <HourlyWeatherGrid />
       </div>
     </article>
   );

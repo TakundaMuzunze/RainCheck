@@ -1,13 +1,7 @@
-import type { ForecastData, WeatherData } from '../../../types/weather';
+import { useWeatherContext } from '../../contexts/WeatherContext';
 
-interface Props {
-  weather: WeatherData | null;
-  forecast: ForecastData | null;
-  loading: boolean;
-  error: string | null;
-}
-
-export function WeatherDisplay({ weather, forecast, loading, error }: Props) {
+export function WeatherDisplay() {
+  const { weather, forecast, loading, error } = useWeatherContext();
   if (loading) {
     return (
       <div className="flex w-64 flex-col items-center justify-center gap-4 rounded-xl border border-gray-300 bg-white/20 p-6 backdrop-blur-sm">

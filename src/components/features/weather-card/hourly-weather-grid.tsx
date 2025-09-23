@@ -1,10 +1,7 @@
-import type { ForecastData } from '../../../types/weather';
+import { useWeatherContext } from '../../../contexts/WeatherContext';
 
-interface Props {
-  forecast: ForecastData | null;
-}
-
-export function HourlyWeatherGrid({ forecast }: Props) {
+export function HourlyWeatherGrid() {
+  const { forecast } = useWeatherContext();
   const hoursTodayData = forecast?.forecast.forecastday.flatMap((day) => day.hour) || [];
 
   const currentHour = new Date();

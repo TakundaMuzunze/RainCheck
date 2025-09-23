@@ -1,11 +1,7 @@
-import type { ForecastData, WeatherData } from '../../../types/weather';
+import { useWeatherContext } from '../../contexts/WeatherContext';
 
-interface Props {
-  weather: WeatherData | null;
-  forecast: ForecastData | null;
-}
-
-export function ConditionsPanel({ weather, forecast }: Props) {
+export function ConditionsPanel() {
+  const { weather, forecast } = useWeatherContext();
   return (
     <div className="background-blur-xl flex flex-row items-center justify-between gap-8 rounded-xl bg-white/20 p-3">
       <span className="flex flex-row items-end gap-3">
