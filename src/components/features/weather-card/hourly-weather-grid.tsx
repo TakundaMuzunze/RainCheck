@@ -1,33 +1,37 @@
-interface HourlyWeather {
-  time: string;
-  temperature: number;
-  condition: string;
-  icon: string;
+import type { ForecastData } from '../../../types/weather';
+
+interface Props {
+  forecast: ForecastData | null;
 }
 
-interface HourlyWeatherGridProps {
-  hourlyData: HourlyWeather[];
-}
+export function HourlyWeatherGrid({ forecast }: Props) {
+  const hoursTodayData = forecast?.forecast.forecastday.flatMap((day) => day.hour) || [];
 
-export function HourlyWeatherGrid({ hourlyData }: HourlyWeatherGridProps) {
+  const currentHour = new Date();
+
+  const next5Hours = hoursTodayData
+    .filter((hour) => {
+      const hourTime = new Date(hour.time);
+      return hourTime >= currentHour;
+    })
+    .slice(0, 5);
+
   return (
-    <div className="grid grid-cols-5 gap-2 mt-4">
-      {hourlyData.map((hour, index) => (
-        <div 
-          key={index}
-          className="flex flex-col justify-center items-center p-2 bg-white/20 rounded-lg backdrop-blur-sm"
-        >
-          <span className="text-xs text-gray-600 font-medium">
-            {hour.time}
+    <div className="mt-4 grid grid-cols-5 gap-2">
+      {next5Hours.map((day, index) => (
+        <div key={index} className="flex flex-col items-center justify-center rounded-lg p-2">
+          <span className="text-xs font-medium">
+            <p className="text-lg"> {new Date(day.time).getHours()}:00</p>
           </span>
-          <div className="text-3xl mb-1">
-            {hour.icon}
-          </div>
+          <span className="text-xs font-medium">
+            <img className="w-full object-contain" src={day.condition.icon} />
+          </span>
           <span className="text-sm font-semibold">
-            {hour.temperature}°
+            <p className="text-lg">{day.temp_c}°</p>
           </span>
         </div>
       ))}
     </div>
   );
 }
+
