@@ -17,7 +17,9 @@ export interface WeatherData {
     };
 
     humidity: number;
-    wind_kph: number;
+    wind_mph: number;
+    precip_mm: number;
+    cloud: number;
   };
 }
 
@@ -33,6 +35,7 @@ export interface ForecastData {
       day: {
         maxtemp_c: number;
         mintemp_c: number;
+        daily_chance_of_rain: number;
         condition: {
           text: string;
           icon: string;
@@ -41,6 +44,7 @@ export interface ForecastData {
       hour: Array<{
         time: string;
         temp_c: number;
+        chance_of_rain: number;
         condition: {
           text: string;
           icon: string;
