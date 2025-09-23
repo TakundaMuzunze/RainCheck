@@ -20,3 +20,33 @@ export interface WeatherData {
     wind_kph: number;
   };
 }
+
+export interface ForecastData {
+  location: {
+    name: string;
+    country: string;
+  };
+
+  forecast: {
+    forecastday: Array<{
+      date: string;
+      day: {
+        maxtemp_c: number;
+        mintemp_c: number;
+        condition: {
+          text: string;
+          icon: string;
+        };
+      };
+      hour: Array<{
+        time: string;
+        temp_c: number;
+        condition: {
+          text: string;
+          icon: string;
+        };
+      }>;
+    }>;
+  };
+}
+
