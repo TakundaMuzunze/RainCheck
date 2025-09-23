@@ -1,11 +1,11 @@
-import type { WeatherData } from '../../types/weather';
-import { PinIcon } from '../icons/pin-icon';
+import type { WeatherData } from '../../../types/weather';
+import { PinIcon } from '../../icons/pin-icon';
 
 interface Props {
-  weather: WeatherData | null
+  weather: WeatherData | null;
 }
 
-export function Header({weather}: Props) {
+export function Header({ weather }: Props) {
   return (
     <header className="flex w-full flex-row items-center justify-between px-2 py-5">
       <div className="flex flex-row items-center gap-2">
@@ -15,3 +15,4 @@ export function Header({weather}: Props) {
     </header>
   );
 }
+
