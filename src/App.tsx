@@ -4,6 +4,7 @@ import './App.css';
 import { Header } from './components/layout/header';
 import { ConditionsPanel } from './components/ui/weather-conditions';
 import { WeatherProvider } from './contexts/WeatherContext';
+import { WeeklyForecast } from './components/features/weekly-forecast/weekly-forecast';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <WeatherDisplay />
         <ConditionsPanel />
         <WeatherCard />
+        <WeeklyForecast />
       </div>
     </WeatherProvider>
   );
